@@ -1,0 +1,30 @@
+page:
+  user:
+    list:
+      mainTitle: Page - List of users
+      title: List of registered users
+      table:
+        colName: Name
+        colAge: Age
+        nodata: No users registered
+      fragment:
+        new:
+          form:
+            button:
+              submit:
+                label: Add a new User
+
+    new:
+      title: Register a new User
+
+  error:
+    notfound:
+      title: 404 - Page not found !
+    internal:
+      title: 500 - Internal server error !
+      notice: Please contact support for more information...
+
+controller:
+  user:
+    list:
+      flashNewAdded: New User added !

@@ -1,0 +1,17 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+root:
+    path: /
+    controller: App\Controller\HomeController::index
+    methods: ["GET"]
+home_index:
+    path: /home
+    controller: App\Controller\HomeController::index
+    methods: ["GET"]
+
+user_list:
+    path: /users/list
+    controller: App\Controller\UserController::list
+    methods: ["POST", "GET"]

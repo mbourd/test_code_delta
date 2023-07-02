@@ -1,0 +1,10 @@
+validator:
+  user:
+    name:
+      minMessage: "The user name must be at least {{ limit }} characters"
+      maxMessage: "The user name must not exceed {{ limit }} characters"
+      notBlankMessage: "The user name is required"
+    age:
+      minMessage: "The user must be at least aged {{ min }}"
+      maxMessage: "The user age can not exceed {{ max }} years old"
+      notInRangeMessage: "The user must be aged at least between {{ min }} and {{ max }} years old"

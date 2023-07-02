@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{"page.home.index.title"|trans}}{% endblock %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <style type="text/css">
+        .page-home h1 {
+            font-size: calc(6rem + 1.5vw);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="page-home">
+        <h1 class="text-center">Welcome home ! 👋</h1>
+    </div>
+{% endblock %}

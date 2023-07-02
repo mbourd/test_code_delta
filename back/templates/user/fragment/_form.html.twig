@@ -1,0 +1,41 @@
+{# {{ form_start(form, {attr: {novalidate: "novalidate"}}) }} #}
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-md-12 form-group">
+		{{form_label(form.name)}}
+		{{form_widget(form.name, {'attr' : {class : "form-control", placeholder: "type the user name"}})}}
+		{% if errors.name is defined %}
+			{% for k, message in errors.name %}
+			<div class="row">
+				<small class="text-danger">
+					{{message}}
+				</small>
+			</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 form-group">
+		{{form_label(form.age)}}
+		{{form_widget(form.age, {'attr' : {class : "form-control", "placeholder": "type the user age"}})}}
+		{% if errors.age is defined %}
+			{% for k, message in errors.age %}
+			<div class="row">
+				<small class="text-danger">
+					{{message}}
+				</small>
+			</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+</div>
+{# {{ form_widget(form) }} #}
+<div class="row">
+	<div class="col-md-12 form-group">
+		<div class="form-label">
+		</div>
+		<button type="submit" class="btn btn-primary">{{ button_label|default("form.user.save"|trans) }}</button>
+	</div>
+</div>
+{{ form_end(form) }}

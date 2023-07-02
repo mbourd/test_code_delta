@@ -1,0 +1,94 @@
+version: '3'
+
+services:
+  # NOTE: DONT FORGET TO START SERVICE : sudo service docker start
+
+  # # MySQL
+  # database:
+  #   # network_mode: bridge
+  #   tty: true
+  #   container_name: test_deltarm_db
+  #   # Image: https://hub.docker.com/_/mysql
+  #   image: mysql:${MYSQL_VERSION:-8.0}
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-ChangeMe}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE:-test_deltarm}
+  #     # MYSQL_USER: ${MYSQL_USER:-symfony}
+  #     # MYSQL_PASSWORD: ${MYSQL_PASSWORD:-ChangeMe}
+  #     # MYSQL_ALLOW_EMPTY_PASSWORD: yes
+  #     # ...
+  #   volumes:
+  #     - ./mysql-volume:/var/lib/mysql
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   links:
+  #     - database
+  #   restart: always
+  #   ports:
+  #     - 81:80
+  #   environment:
+  #     - PMA_ARBITRARY=1
+
+  # # PostgreSQL
+  # database:
+  #   tty: true
+  #   image: postgres:${POSTGRES_VERSION:-13}-alpine
+  #   environment:
+  #     POSTGRES_DB: ${POSTGRES_DB:-test_deltarm}
+  #     # You should definitely change the password in production
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
+  #     POSTGRES_USER: ${POSTGRES_USER:-symfony}
+  #   volumes:
+  #     - ./pgsql-volume:/var/lib/postgresql/data:rw
+  #   ports:
+  #     - 5432:5432
+  # adminer:
+  #   container_name: test_deltarm_adminer
+  #   image: adminer
+  #   restart: always
+  #   links:
+  #     - database
+  #   ports:
+  #     - 7090:8080
+
+  backend:
+    # network_mode: bridge
+    tty: true
+    container_name: Test_deltarm_back
+    image: testproject/deltarm/back:dev
+    build:
+      context: ./
+      dockerfile: .docker/Dockerfile.Symfony
+    command:
+      [
+        "bash",
+        "-c",
+        "symfony --no-interaction server:stop; symfony --no-interaction server:start"
+      ]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./back:/var/www/default
+
+  frontend:
+    tty: true
+    container_name: Test_deltarm_front
+    image: testproject/deltarm/front:dev
+    build:
+      context: ./
+      dockerfile: .docker/Dockerfile.React
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+    stdin_open: true
+    environment:
+      - 'EXTEND_ESLINT=true'
+
+# volumes:
+#   data:
+#     name: data_mysql
+# # data:
+# #   name: data_pgsql

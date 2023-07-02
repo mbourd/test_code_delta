@@ -1,0 +1,11 @@
+App\Entity\User:
+    properties:
+        name:
+            - NotBlank:
+                message: "validator.user.name.notBlankMessage"
+            - Length:
+                min: 2
+                max: 50
+                minMessage: "validator.user.name.minMessage"
+                maxMessage: "validator.user.name.maxMessage"
+            - App\Validator\Constraints\UserNameStartWithUppercase: ~

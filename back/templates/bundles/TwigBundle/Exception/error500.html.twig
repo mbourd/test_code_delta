@@ -1,0 +1,20 @@
+{# templates/bundles/TwigBundle/Exception/error500.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <style type="text/css">
+        .page-error h1 {
+            font-size: calc(6rem + 1.5vw);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="page-error">
+        <h1 class="page-error text-center">{{"page.error.internal.title"|trans}}</h1>
+        <p>
+            <span class="text-center">{{"page.error.internal.notice"|trans}}</span>
+        </p>
+    </div>
+{% endblock %}

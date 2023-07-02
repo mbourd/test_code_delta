@@ -1,0 +1,17 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <style type="text/css">
+        .page-error h1 {
+            font-size: calc(6rem + 1.5vw);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="page-error">
+        <h1 class="text-center">{{"page.error.notfound.title"|trans}}</h1>
+    </div>
+{% endblock %}

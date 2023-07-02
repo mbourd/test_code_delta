@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        <link
+            rel="stylesheet"
+            href="{{asset('assets/css/bootstrap.min.css')}}"
+        >
+        <link
+            rel="stylesheet"
+            href="{{asset('assets/base.css')}}"
+        >
+        {% endblock %}
+    </head>
+
+    <body>
+        <div class="page-base">
+            <header>
+                {{ include('layout/menu.html.twig') }}
+            </header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="body">
+                            {% block body %}{% endblock %}
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+            <footer></footer>
+        </div>
+        {% block javascripts %}
+        <script
+            type="text/javascript"
+            src="{{asset('assets/js/bootstrap.min.js')}}"
+        ></script>
+        <script type="module">
+            import test from "{{asset('assets/test.js')}}";
+            console.log(test);
+        </script>
+        {% endblock %}
+    </body>
+
+</html>
