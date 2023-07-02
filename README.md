@@ -7,8 +7,7 @@
 
 - Vous n'avez pas à utiliser Docker si votre environnement est PHP 7.3 et composer v1 logiquement.
 
-- J'ai fait la partie frontend de l'exercice en 2 versions, la version classique en Symfony/Twig qui se trouve en `./back` et une autre version en React qui se trouve en `./front` mais à chaque fois que je fais une requête d'API une nouvelle session ce créer et du coup la réponse de l'API envoie tout le temps un tableau vide, malgré que je fasse une sauvegarde en session.
-- La partie `./back` correspond aux réalisations à faire
+- J'ai fait la partie frontend de l'exercice en 2 versions, la version classique en Symfony/Twig qui se trouve en `./back` et une autre version en React qui se trouve en `./front`
 - access the application : `http://localhost:8000/`
 
 ## Réalisations
