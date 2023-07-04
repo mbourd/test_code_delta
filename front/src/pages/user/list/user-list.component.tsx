@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import UserDetailComponent from "../../../components/user-detail/user-detail.component";
 import { service } from "../../../services/Service";
 import { User } from "../../../models/User";
+import useEffectDidMount from "../../../hooks/useEffectDidMount";
+import useEffectWillUnmount from "../../../hooks/useEffectWillUnmount";
 
 const UserListComponent: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -20,11 +22,15 @@ const UserListComponent: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    if (null !== addedUser) fetchAllUsers();
+  useEffectDidMount(() => {
+    fetchAllUsers();
 
     // eslint-disable-next-line
   }, [addedUser]);
+
+  useEffectWillUnmount(() => {
+    console.log("unmounted");
+  }, []);
 
   const fetchAllUsers = () => {
     service.user
